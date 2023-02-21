@@ -45,7 +45,7 @@ const questions = () => inquirer
         {
             type: 'input',
             message: 'How can your project be installed?',
-            name: 'title'
+            name: 'installation'
         },
         {
             type: 'input',
@@ -55,13 +55,19 @@ const questions = () => inquirer
         {
             type: 'input',
             message: 'Which licence is your project licenced by?',
-            name: 'contribution'
+            name: 'license'
+        },
+        {
+            type: 'input',
+            message: 'What are the instructions on how to test the application?',
+            name: 'tests'
         },
     ]);
 
 
 // function to write README file
 function writeToFile(fileName, data) {
+  
 }
 
 // function to initialize program
