@@ -53,7 +53,7 @@ const questions = () => inquirer
             name: 'contribution'
         },
         {
-            type: 'input',
+            type: 'list',
             message: 'Which licence is your project licenced by?',
             name: 'license'
         },
