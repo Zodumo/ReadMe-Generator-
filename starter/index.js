@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require('path');
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
-
+let licences = ['MIT', 'Boost Software License 1.0', 'Apache License 2.0', 'Eclipse Public License 2.0']
 // array of questions for user
 const questions = () => inquirer
     .prompt([
