@@ -7,8 +7,8 @@ function generateMarkdown(data) {
   3. [Usage](#usage)
   4. [Contributing](#contributing)
   5. [Testing](#testing)
-  6. [Questions](#questions)
-  7. [License](#license)
+  6. [License](#license)
+  7. [Questions](#questions)
   
   ## Description
   ${data.description}
@@ -28,10 +28,11 @@ function generateMarkdown(data) {
   To test the application: 
   ${data.tests}
   
-  
   ## License
   ${data.license} 
- `;
+ 
+  ##Quetions
+  ${data} `;
 }
 
 module.exports = generateMarkdown;

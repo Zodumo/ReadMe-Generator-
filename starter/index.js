@@ -2,7 +2,10 @@ const fs = require("fs");
 const path = require('path');
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
-let licences = ['MIT', 'Boost Software License 1.0', 'Apache License 2.0', 'Eclipse Public License 2.0']
+let licences = ['MIT', 'Boost Software License 1.0', 'Apache License 2.0', 'Eclipse Public License 2.0'];
+const util = require ("util");
+const writeFileAsync = util.promisify(fs.writeFile);
+
 // array of questions for user
 const questions = () => inquirer
     .prompt([
@@ -54,8 +57,21 @@ const questions = () => inquirer
         },
         {
             type: 'list',
-            message: 'Which licence is your project licenced by?',
-            name: 'license'
+            message: 'Pick the application licence from the list below',
+            name: 'license',
+            choices: licences,
+            filter: function (val) {
+                if (val == "MIT") {
+
+                    return "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
+                } else if (val == 'Boost Software License 1.0') {
+                    return "[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)"
+                } else if (val == "Apache 2.0 License") {
+                    return "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
+                } else if (val == "Eclipse Public License 1.0") {
+                    return "[![License](https://img.shields.io/badge/License-EPL_1.0-red.svg)](https://opensource.org/licenses/EPL-1.0)"
+                }
+            }
         },
         {
             type: 'input',
@@ -67,12 +83,20 @@ const questions = () => inquirer
 
 // function to write README file
 function writeToFile(fileName, data) {
-  
+    writeFileAsync(fileName,data).then(() => console.log("written successfully... :)")).catch((error)=>console.error(error))
 }
 
 // function to initialize program
 function init() {
-questions()
+    questions().then((answers)=> {
+        if(answers.licenses== 'MIT'){
+            
+            answers["licenseBadge"] = `[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)`
+        }
+    
+    writeToFile("README.md",generateMarkdown(answers))
+    
+})
 }
 
 // function call to initialize program
