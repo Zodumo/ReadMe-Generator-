@@ -12,12 +12,13 @@ It is important that all revelant packages are installed, to double check you wi
 ## Usage
 
 To run the program, ensure that you have cloned the repository, installed the npm packages as instructed above and ensure that you are in the starter directory.
-Now, run node index.js to run the index.js file.
+Type "node index.js" to run the index.js file.
 You will now be presented with a series of prompts, to which you should write you anwers. 
 Press Enter only to submit your response and use commas as instructed.
 Once you have answered all the prompts. You should be able to see your newly generated README document inside the starter directory.
 
 ## Video Demo
+The functionality of the application can be viewed on this (google drive) demo : https://drive.google.com/file/d/1aYP0vyQwGpHRin4OVTrycBZqonkK1dyP/view 
 
 ## License 
 N/A
